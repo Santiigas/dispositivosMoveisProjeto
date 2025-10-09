@@ -1,5 +1,5 @@
 {
-  "name": "appsaude",
+  "name": "macros-app",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -9,12 +9,23 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@react-native-picker/picker": "^2.11.2",
     "expo": "~54.0.10",
     "expo-status-bar": "~3.0.8",
+    "lucide-react": "0.544.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-native": "0.81.4",
-    "react-native-web": "^0.21.0"
+    "react-native-web": "^0.21.0",
+    "tailwind-merge": "3.3.1",
+    "tailwindcss-animate": "1.0.7",
+    "yarn": "^1.22.22"
   },
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "@types/react": "~19.1.10",
+    "postcss": "8.5.6",
+    "tailwindcss": "4.1.14",
+    "typescript": "~5.9.2"
+  }
 }
