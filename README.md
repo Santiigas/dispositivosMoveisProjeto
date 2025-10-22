@@ -47,3 +47,68 @@ Objetivos específicos:
 
 Resultados e efeitos esperados:
 Espera-se que, com o uso contínuo da aplicação, os usuários desenvolvam maior compreensão sobre sua própria alimentação, peso e composição corporal. A ferramenta busca contribuir para o fortalecimento da autonomia na gestão nutricional e para a promoção de hábitos mais saudáveis, especialmente entre pessoas com rotinas intensas e pouco tempo para acompanhamento presencial.
+
+## Referencial Teórico
+A literatura recente evidencia que aplicativos móveis voltados para nutrição e hábitos alimentares podem exercer impacto significativo sobre o comportamento dos usuários e sobre indicadores de saúde como índice de massa corporal, ingestão energética e hábitos alimentares. Por exemplo, West et al. (2017) verificaram que o uso de apps de dieta e nutrição estava associado a mudanças em comportamentos alimentares, especialmente quando estes aplicativos incorporavam elementos teóricos de mudança de comportamento (como auto-eficácia, fixação de metas, atitudes). 
+
+https://mhealth.jmir.org/2017/7/e95/metrics?utm_source=chatgpt.com
+
+Em uma revisão sistemática recente, constatou-se que intervenções baseadas em apps têm efeito favorável no aumento do consumo de frutas e vegetais e na modificação de padrões alimentares entre adultos, o que reforça a pertinência de soluções digitais para o acompanhamento nutricional. 
+
+https://ijbnpa.biomedcentral.com/articles/10.1186/s12966-025-01823-7?utm_source=chatgpt.com
+
+Outras análises apontam que apps bem-planejados para nutrição funcionam como ferramentas de auto­monitoramento, levando à redução de peso, circunferência da cintura e ingestão calórica em estudos randomizados. 
+
+https://pubmed.ncbi.nlm.nih.gov/31353783/
+
+Contudo, estudos de conteúdo de apps existentes apontam que muitos falham em integrar teorias de mudança de comportamento ou envolver profissionais de nutrição, o que pode limitar sua efetividade. 
+
+https://www.cambridge.org/core/journals/public-health-nutrition/article/can-existing-mobile-apps-support-healthier-food-purchasing-behaviour-content-analysis-of-nutrition-content-behaviour-change-theory-and-user-quality-integration/B3874D1C9739FE8FAD4771D012B97167?utm_source=chatgpt.com
+
+No desenvolvimento do aplicativo “Macros – Contador de Calorias”, optou-se por adotar essas evidências como base: (i) centralizar dados do usuário e cálculos nutricionais (tendo como pano de fundo os resultados positivos de auto-monitoramento), (ii) oferecer visualização clara e interação intuitiva (em linha com recomendações de design para engajamento), e (iii) alinhar funcionalidades aos objetivos individuais (ganhar, perder ou manter peso) — todos elementos que a literatura destaca como importantes para efetividade.
+
+Além disso, considerando que o cálculo da Taxa Metabólica Basal (TMB), do Índice de Massa Corporal (IMC) e da distribuição de macronutrientes é amplamente reconhecido na nutrição como método para monitoramento e planejamento alimentar, o uso desses cálculos no aplicativo reforça tanto a base científica quanto a aplicabilidade no cotidiano do usuário.
+
+Dessa forma, este referencial teórico sustenta a escolha das ações elaboradas no projeto de extensão, justificando a construção de uma ferramenta mobile que apoie o acompanhamento nutricional de maneira integrada, prática e sustentável.
+
+5. Bibliografia
+
+Eis como você pode listar as referências (em formato simplificado, você adapta conforme normas da sua instituição):
+
+West, J. H., Belvedere, L. M., Andreasen, R., Frandsen, C., Hall, P. C., & Crookston, B. T. (2017). Controlling Your “App”etite: How Diet and Nutrition-Related Mobile Apps Lead to Behavior Change. JMIR mHealth and uHealth, 5(7), e95. https://doi.org/10.2196/mhealth.7410
+https://mhealth.jmir.org/2017/7/e95/metrics?utm_source=chatgpt.com
+
+
+Milne-Ives, M., Lam, C., De Cock, C., Van Velthoven, M. H., & Meinert, E. (2020). Mobile Apps for Health Behavior Change in Physical Activity, Diet, Drug and Alcohol Use, and Mental Health: Systematic Review. JMIR mHealth and uHealth, 8(3), e17046. 
+
+https://mhealth.jmir.org/2020/3/e17046/?utm_source=chatgpt.com
+
+[Autor desconhecido]. (2025). The effectiveness of mobile app-based interventions in facilitating behaviour change towards healthier and more sustainable diets: A systematic review and meta-analysis. International Journal of Behavioral Nutrition and Physical Activity. 
+https://pubmed.ncbi.nlm.nih.gov/31353783/
+
+[Autor desconhecido]. (2019). The effectiveness of app-based mobile interventions on nutrition behaviours and nutrition-related health outcomes: A systematic review and meta-analysis. Journal, etc. 
+https://pubmed.ncbi.nlm.nih.gov/31955740/
+
+[Autor desconhecido]. (2019). Assessment of nutrition-focused mobile apps’ influence on consumers’ healthy food behaviour and nutrition knowledge. Journal, etc. 
+[PubMed](https://pubmed.ncbi.nlm.nih.gov/31955740/)
+
+
+## TERMO DE ACORDO
+
+TERMO DE ACORDO DE COOPERAÇÃO
+
+Eu, ____________________________________________, portador(a) do CPF nº ____________________, declaro que concordo em participar como colaborador(a) no projeto intitulado **"_____________________________________"**, desenvolvido por Santiago Oliveira, aluno da Estácio de Sá.
+
+Minha colaboração consiste em analisar, revisar e contribuir com observações técnicas referentes aos aspectos abordados no projeto, de acordo com minha área de atuação profissional.
+
+Declaro estar ciente de que esta participação possui caráter voluntário, sem qualquer vínculo empregatício ou remuneração, e tem como finalidade contribuir para o desenvolvimento acadêmico e prático do projeto.
+
+Por meio deste termo, manifesto minha concordância com a proposta apresentada e autorizo a inclusão do meu nome na seção de colaboradores e parceiros do trabalho, se assim for necessário.
+
+Local e Data: ________________________________________
+
+Assinatura: ___________________________________________
+
+Nome legível: __________________________________________
+
+Profissão: _____________________________________________
