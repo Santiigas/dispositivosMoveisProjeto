@@ -10,7 +10,7 @@ O projeto está sendo desenvolvido no contexto da disciplina Programação para 
 
 Dessa forma, o Macros – Contador de Calorias propõe-se não apenas a servir como um exercício de aplicação dos conhecimentos técnicos da disciplina, mas também como uma contribuição social, incentivando o autocuidado e a conscientização alimentar por meio da tecnologia.
 
-# ROTEIRO DE ESTENSÃO
+# ROTEIRO DE EXTENSÃO
 
 ## 1.1. Identificação das partes interessadas e parceiros
 As partes interessadas neste projeto são pessoas que buscam melhorar sua alimentação e composição corporal, mas que enfrentam a rotina acelerada do dia a dia, o que dificulta o acompanhamento nutricional adequado. Além disso, incluem-se profissionais da área de Educação Física, como personal trainers, que realizam o acompanhamento de seus alunos e poderão utilizar o aplicativo como ferramenta auxiliar no processo de orientação alimentar.
