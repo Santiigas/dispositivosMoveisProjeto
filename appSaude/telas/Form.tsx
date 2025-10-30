@@ -74,19 +74,19 @@ export default function Form({ formData, onFormChange, onSubmit }) {
         </View>
 
         <View style={styles.inputGroup}>
-            <Text style={styles.label}>Qual a sua quantidade de água que você ingere por dia?</Text>
-            <View style={styles.pickerContainer}>
-              <Picker
-                selectedValue={formData.agua}
-                onValueChange={(value) => onFormChange({ ...formData, agua: value })}
-                style={styles.picker}
-              >
-                <Picker.Item label="1 litro" value="1" />
-                <Picker.Item label="2 litros" value="2" />
-                <Picker.Item label="3 litros" value="3" />
-                <Picker.Item label="4 litros" value="4" />
-              </Picker>
-            </View>
+          <Text style={styles.label}>Qual a sua quantidade de água que você ingere por dia?</Text>
+          <View style={styles.pickerContainer}>
+            <Picker
+              selectedValue={formData.agua}
+              onValueChange={(value) => onFormChange({ ...formData, agua: value })}
+              style={styles.picker}
+            >
+              <Picker.Item label="1 litro" value="1" />
+              <Picker.Item label="2 litros" value="2" />
+              <Picker.Item label="3 litros" value="3" />
+              <Picker.Item label="4 litros" value="4" />
+            </Picker>
+          </View>
 
         </View>
 
@@ -120,11 +120,11 @@ const styles = StyleSheet.create({
   formSubtitle: {
     fontSize: 16,
     color: "#666",
-    marginBottom: 32,
+    marginBottom: 15,
     lineHeight: 22,
   },
   inputGroup: {
-    marginBottom: 20,
+    marginBottom: 15,
   },
   label: {
     fontSize: 16,
