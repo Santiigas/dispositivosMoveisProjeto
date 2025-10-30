@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
   formTitle: {
     fontSize: 28,
     fontWeight: "bold",
-    color: "#754f44",
+    color: "#E0640B",
     marginBottom: 8,
   },
   formSubtitle: {
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
     height: 50,
   },
   submitButton: {
-    backgroundColor: "#754f44",
+    backgroundColor: "#E0640B",
     paddingVertical: 18,
     borderRadius: 12,
     alignItems: "center",

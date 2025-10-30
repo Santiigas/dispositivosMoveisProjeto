@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity, ImageBackground } from "react-native"
+import { StyleSheet, Text, View, TouchableOpacity, ImageBackground, Image } from "react-native"
 import { StatusBar } from "expo-status-bar"
 
 function FeatureItem({ icon, title, description }) {
@@ -20,7 +20,8 @@ export default function Welcome({ onStart }) {
         <View style={styles.overlay} />
         <View style={styles.content}>
           <View style={styles.logoContainer}>
-            <Text style={styles.title}>Macros</Text>
+            {/* <Text style={styles.title}>Macros</Text> */}
+            <Image source={require("../assets/logo-macros-cores.png")} style={styles.logo} />
             <Text style={styles.subtitle}>Controle suas macros diárias</Text>
           </View>
 
@@ -49,7 +50,7 @@ const styles = StyleSheet.create({
   },
   overlay: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: "rgba(117, 79, 68, 0.7)",
+    backgroundColor: "rgba(187, 77, 0, 0.4)",
   },
   content: {
     flex: 1,
@@ -63,21 +64,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 40,
   },
-  logoCircle: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-    backgroundColor: "rgba(255, 255, 255, 0.15)",
-    alignItems: "center",
-    justifyContent: "center",
-    marginBottom: 24,
-    borderWidth: 3,
-    borderColor: "rgba(255, 255, 255, 0.3)",
-  },
-  logoText: {
-    fontSize: 48,
-    fontWeight: "bold",
-    color: "#fff",
+  // logoText: {
+  //   fontSize: 48,
+  //   fontWeight: "bold",
+  //   color: "#fff",
+  // },
+  logo: {
+    width: 140,
+    height: 180,
+    marginBottom: 20,
+    
   },
   title: {
     fontSize: 48,
@@ -87,7 +83,7 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 22,
-    color: "rgba(255, 255, 255, 0.8)",
+    color: "#fff",
     textAlign: "center",
   },
   featuresContainer: {
@@ -100,7 +96,7 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 16,
     borderWidth: 1,
-    borderColor: "rgba(255, 255, 255, 0.2)",
+    borderColor: "rgba(255, 255, 255, 0.3)",
   },
   featureIcon: {
     fontSize: 32,
@@ -110,18 +106,18 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   featureTitle: {
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: "600",
     color: "#fff",
     marginBottom: 4,
   },
   featureDescription: {
-    fontSize: 18,
-    color: "rgba(255, 255, 255, 0.7)",
+    fontSize: 19,
+    color: "rgba(255, 255, 255, 0.9)",
     lineHeight: 20,
   },
   button: {
-    backgroundColor: "#fff",
+    backgroundColor: "#FA9E2A",
     paddingVertical: 18,
     paddingHorizontal: 32,
     borderRadius: 30,
@@ -135,6 +131,6 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 18,
     fontWeight: "bold",
-    color: "#754f44",
+    color: "#fff",
   },
 })
