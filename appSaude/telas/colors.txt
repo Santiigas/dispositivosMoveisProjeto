@@ -4,4 +4,6 @@
 #F7AF11
 #FAAD7D
 #E0640B
-#BB4D00
+#BB4D00 -- botões
+
+obs: add um globall.css

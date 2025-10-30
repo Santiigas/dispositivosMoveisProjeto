@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   },
   logoContainer: {
     alignItems: "center",
-    marginTop: 40,
+    marginTop: 10,
   },
   // logoText: {
   //   fontSize: 48,
@@ -120,6 +120,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#FA9E2A",
     paddingVertical: 18,
     paddingHorizontal: 32,
+    marginBottom: 15,
     borderRadius: 30,
     alignItems: "center",
     shadowColor: "#000",
