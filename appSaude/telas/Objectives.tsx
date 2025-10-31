@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity, Alert 
 import { Picker } from "@react-native-picker/picker"
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export default function Objectives({ navigation, onChange }) {
+export default function Objectives({ onFormChange, onSubmit }) {
   const [atividadeFisica, setAtividadeFisica] = useState("");
   const [objetivoPrincipal, setObjetivoPrincipal] = useState("");
   const [urgencia, setUrgencia] = useState("");
@@ -14,12 +14,10 @@ export default function Objectives({ navigation, onChange }) {
   const [medicamentos, setMedicamentos] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
-  // Carregar dados salvos quando o componente montar
   useEffect(() => {
     loadSavedData();
   }, []);
 
-  // Função para carregar dados do AsyncStorage
   const loadSavedData = async () => {
     try {
       const savedData = await AsyncStorage.getItem('ObjectivesData');
@@ -35,26 +33,21 @@ export default function Objectives({ navigation, onChange }) {
         setMedicamentos(data.medicamentos || "");
       }
     } catch (error) {
-      console.error('Erro ao carregar dados:', error);
     } finally {
       setIsLoading(false);
     }
   };
 
-  // Função para salvar dados no AsyncStorage
   const saveData = async (data) => {
     try {
       await AsyncStorage.setItem('ObjectivesData', JSON.stringify(data));
     } catch (error) {
-      console.error('Erro ao salvar dados:', error);
       throw error;
     }
   };
 
-  // Função memoizada para comunicar alterações
-  const handleChange = useCallback(() => {
-    // Não executa se ainda está carregando dados iniciais
-    if (isLoading) return;
+  useEffect(() => {
+    if (isLoading) return
 
     const data = {
       atividadeFisica,
@@ -65,18 +58,16 @@ export default function Objectives({ navigation, onChange }) {
       refeicoesPorDia,
       condicoesSaude,
       medicamentos,
-    };
-
-    // Salvar no AsyncStorage automaticamente
-    saveData(data);
-
-    // Comunicar ao componente pai
-    if (onChange) {
-      onChange(data);
     }
-  }, [atividadeFisica, objetivoPrincipal, urgencia, restricoesAlimentares, alergias, refeicoesPorDia, condicoesSaude, medicamentos, isLoading, onChange]);
 
-  // Função para salvar manualmente com feedback
+    const timeout = setTimeout(() => {
+      saveData(data)
+      if (onFormChange) onFormChange((prev) => ({ ...prev, ...data }))
+    }, 600)
+
+    return () => clearTimeout(timeout)
+  }, [atividadeFisica, objetivoPrincipal, urgencia, restricoesAlimentares, alergias, refeicoesPorDia, condicoesSaude, medicamentos, isLoading])
+
   const handleSaveButton = async () => {
     const data = {
       atividadeFisica,
@@ -90,30 +81,14 @@ export default function Objectives({ navigation, onChange }) {
     };
 
     try {
-      await saveData(data);
-      
-      // Comunicar ao componente paii
-      if (onChange) {
-        onChange(data);
-      }
-
-      // Feedback visual
-      Alert.alert(
-        'Sucesso!',
-        'Seus dados foram salvos com sucesso.',
-        [{ text: 'OK' }]
-      );
+      await saveData(data)
+      if (onFormChange) onFormChange((prev) => ({ ...prev, ...data }))
+      Alert.alert("Sucesso!", "Seus dados foram salvos com sucesso.", [{ text: "OK" }])
     } catch (error) {
-      console.error('Erro ao salvar dados:', error);
-      Alert.alert(
-        'Erro',
-        'Não foi possível salvar os dados. Tente novamente.',
-        [{ text: 'OK' }]
-      );
+      Alert.alert("Erro", "Não foi possível salvar os dados.", [{ text: "OK" }])
     }
-  };
+  }
 
-  // Função para limpar todos os campos
   const handleClearForm = () => {
     Alert.alert(
       'Limpar Formulário',
@@ -127,7 +102,6 @@ export default function Objectives({ navigation, onChange }) {
           text: 'Limpar',
           style: 'destructive',
           onPress: async () => {
-            // Limpar todos os estados
             setAtividadeFisica("");
             setObjetivoPrincipal("");
             setUrgencia("");
@@ -138,8 +112,7 @@ export default function Objectives({ navigation, onChange }) {
             setMedicamentos("");
 
             try {
-              // Remover dados do AsyncStorage..
-              await AsyncStorage.removeItem('objectivesData');
+              await AsyncStorage.removeItem('ObjectivesData');
               
               Alert.alert(
                 'Sucesso!',
@@ -160,9 +133,7 @@ export default function Objectives({ navigation, onChange }) {
     );
   };
 
-  // Função para o botão Continuar - navega para Register_Objectives
   const handleSubmit = async () => {
-    // Validação básica
     if (!atividadeFisica || !objetivoPrincipal || !urgencia || !refeicoesPorDia) {
       Alert.alert(
         'Campos obrigatórios',
@@ -184,26 +155,14 @@ export default function Objectives({ navigation, onChange }) {
     };
 
     try {
-  // Salvar antes de continuar
-  await saveData(data);
-  
-  // Navegar para Register_Objectives (sem .tsx na navegação)
-  navigation.navigate('Register_Objectives', { 
-    ObjectivesData: data 
-  });
-} catch (error) {
-  Alert.alert(
-    'Erro',
-    'Não foi possível salvar os dados. Tente novamente.',
-    [{ text: 'OK' }]
-  );
-}
-  };
+      await saveData(data)
+      if (onFormChange) onFormChange((prev) => ({ ...prev, ...data }))
+      if (onSubmit) onSubmit()
+    } catch (error) {
+      Alert.alert("Erro", "Não foi possível salvar os dados.", [{ text: "OK" }])
+    }
+  }
 
-  // Dispara handleChange sempre que algum estado mudar (após carregamento inicial)
-  useEffect(() => {
-    handleChange();
-  }, [handleChange]);
 
   return (
     <View style={styles.container}>
@@ -331,9 +290,7 @@ export default function Objectives({ navigation, onChange }) {
           />
         </View>
 
-        {/* Container de botões em linha */}
         <View style={styles.buttonRow}>
-          {/* Botão de Limpar */}
           <TouchableOpacity 
             style={styles.clearButton} 
             onPress={handleClearForm}
@@ -342,7 +299,6 @@ export default function Objectives({ navigation, onChange }) {
             <Text style={styles.clearButtonText}>🗑️ Limpar</Text>
           </TouchableOpacity>
 
-          {/* Botão de Salvar */}
           <TouchableOpacity 
             style={styles.saveButton} 
             onPress={handleSaveButton}
@@ -352,7 +308,6 @@ export default function Objectives({ navigation, onChange }) {
           </TouchableOpacity>
         </View>
 
-        {/* Botão Continuar - Navega para Register_Objectives */}
         <TouchableOpacity 
           style={styles.submitButton} 
           onPress={handleSubmit} 
@@ -382,7 +337,7 @@ const styles = StyleSheet.create({
   formTitle: {
     fontSize: 28,
     fontWeight: "bold",
-    color: "#754f44",
+    color: "#E0640B",
     marginBottom: 8,
   },
   inputGroup: {
