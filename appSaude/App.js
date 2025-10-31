@@ -8,7 +8,7 @@ import Form from "./telas/Form"
 import Meals from "./telas/Meals"
 import SettingsScreen from "./telas/Settings"
 import TabBar from "./components/TabBar"
-import ProfileScreen from "./telas/Profile"
+import Objectives from "./telas/Objectives"
 
 function AppContent() {
   const [currentScreen, setCurrentScreen] = useState("welcome")
@@ -35,6 +35,17 @@ function AppContent() {
     return (
       <Form
         formData={formData}
+        onFormChange={setFormData}
+        onSubmit={() => {
+          setCurrentScreen("objectives")
+        }}
+      />
+    )
+  }
+
+  if (currentScreen === "objectives") {
+    return (
+      <Objectives
         onFormChange={setFormData}
         onSubmit={() => {
           setCurrentScreen("meals")
