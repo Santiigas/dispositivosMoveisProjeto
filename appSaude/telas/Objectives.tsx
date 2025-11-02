@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity, Alert } from "react-native"
 import { Picker } from "@react-native-picker/picker"
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 export default function Objectives({ onFormChange, onSubmit }) {
   const [atividadeFisica, setAtividadeFisica] = useState("");
@@ -33,42 +34,15 @@ export default function Objectives({ onFormChange, onSubmit }) {
         setMedicamentos(data.medicamentos || "");
       }
     } catch (error) {
+      // Tratar erro se necessário
     } finally {
       setIsLoading(false);
     }
   };
 
-  const saveData = async (data) => {
-    try {
-      await AsyncStorage.setItem('ObjectivesData', JSON.stringify(data));
-    } catch (error) {
-      throw error;
-    }
-  };
-
   useEffect(() => {
-    if (isLoading) return
+    if (isLoading) return;
 
-    const data = {
-      atividadeFisica,
-      objetivoPrincipal,
-      urgencia,
-      restricoesAlimentares,
-      alergias,
-      refeicoesPorDia,
-      condicoesSaude,
-      medicamentos,
-    }
-
-    const timeout = setTimeout(() => {
-      saveData(data)
-      if (onFormChange) onFormChange((prev) => ({ ...prev, ...data }))
-    }, 600)
-
-    return () => clearTimeout(timeout)
-  }, [atividadeFisica, objetivoPrincipal, urgencia, restricoesAlimentares, alergias, refeicoesPorDia, condicoesSaude, medicamentos, isLoading])
-
-  const handleSaveButton = async () => {
     const data = {
       atividadeFisica,
       objetivoPrincipal,
@@ -80,58 +54,13 @@ export default function Objectives({ onFormChange, onSubmit }) {
       medicamentos,
     };
 
-    try {
-      await saveData(data)
-      if (onFormChange) onFormChange((prev) => ({ ...prev, ...data }))
-      Alert.alert("Sucesso!", "Seus dados foram salvos com sucesso.", [{ text: "OK" }])
-    } catch (error) {
-      Alert.alert("Erro", "Não foi possível salvar os dados.", [{ text: "OK" }])
-    }
-  }
+    const timeout = setTimeout(() => {
+      AsyncStorage.setItem('ObjectivesData', JSON.stringify(data));
+      if (onFormChange) onFormChange((prev) => ({ ...prev, ...data }));
+    }, 600);
 
-  const handleClearForm = () => {
-    Alert.alert(
-      'Limpar Formulário',
-      'Tem certeza que deseja limpar todos os campos? Esta ação não pode ser desfeita.',
-      [
-        {
-          text: 'Cancelar',
-          style: 'cancel'
-        },
-        {
-          text: 'Limpar',
-          style: 'destructive',
-          onPress: async () => {
-            setAtividadeFisica("");
-            setObjetivoPrincipal("");
-            setUrgencia("");
-            setRestricoesAlimentares("");
-            setAlergias("");
-            setRefeicoesPorDia("");
-            setCondicoesSaude("");
-            setMedicamentos("");
-
-            try {
-              await AsyncStorage.removeItem('ObjectivesData');
-              
-              Alert.alert(
-                'Sucesso!',
-                'Todos os campos foram limpos.',
-                [{ text: 'OK' }]
-              );
-            } catch (error) {
-              console.error('Erro ao limpar dados:', error);
-              Alert.alert(
-                'Erro',
-                'Não foi possível limpar os dados salvos.',
-                [{ text: 'OK' }]
-              );
-            }
-          }
-        }
-      ]
-    );
-  };
+    return () => clearTimeout(timeout);
+  }, [atividadeFisica, objetivoPrincipal, urgencia, restricoesAlimentares, alergias, refeicoesPorDia, condicoesSaude, medicamentos, isLoading]);
 
   const handleSubmit = async () => {
     if (!atividadeFisica || !objetivoPrincipal || !urgencia || !refeicoesPorDia) {
@@ -155,14 +84,13 @@ export default function Objectives({ onFormChange, onSubmit }) {
     };
 
     try {
-      await saveData(data)
-      if (onFormChange) onFormChange((prev) => ({ ...prev, ...data }))
-      if (onSubmit) onSubmit()
+      await AsyncStorage.setItem('ObjectivesData', JSON.stringify(data));
+      if (onFormChange) onFormChange((prev) => ({ ...prev, ...data }));
+      if (onSubmit) onSubmit();
     } catch (error) {
-      Alert.alert("Erro", "Não foi possível salvar os dados.", [{ text: "OK" }])
+      Alert.alert("Erro", "Não foi possível salvar os dados.", [{ text: "OK" }]);
     }
   }
-
 
   return (
     <View style={styles.container}>
@@ -290,24 +218,6 @@ export default function Objectives({ onFormChange, onSubmit }) {
           />
         </View>
 
-        <View style={styles.buttonRow}>
-          <TouchableOpacity 
-            style={styles.clearButton} 
-            onPress={handleClearForm}
-            activeOpacity={0.8}
-          >
-            <Text style={styles.clearButtonText}>🗑️ Limpar</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity 
-            style={styles.saveButton} 
-            onPress={handleSaveButton}
-            activeOpacity={0.8}
-          >
-            <Text style={styles.saveButtonText}>💾 Salvar</Text>
-          </TouchableOpacity>
-        </View>
-
         <TouchableOpacity 
           style={styles.submitButton} 
           onPress={handleSubmit} 
@@ -369,53 +279,6 @@ const styles = StyleSheet.create({
     textAlignVertical: 'top',
     fontSize: 15,
     color: "#333",
-  },
-  buttonRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    gap: 12,
-    marginTop: 24,
-    marginBottom: 12,
-  },
-  clearButton: {
-    flex: 1,
-    backgroundColor: "#dc3545",
-    borderRadius: 12,
-    padding: 16,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
-  clearButtonText: {
-    color: "#fff",
-    fontSize: 16,
-    fontWeight: "bold",
-  },
-  saveButton: {
-    flex: 1,
-    backgroundColor: "#754f44",
-    borderRadius: 12,
-    padding: 16,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
-  saveButtonText: {
-    color: "#fff",
-    fontSize: 16,
-    fontWeight: "bold",
   },
   submitButton: {
     backgroundColor: "#5e9c8a",
