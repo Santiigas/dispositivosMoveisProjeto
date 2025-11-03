@@ -8,7 +8,7 @@ import Form from "./telas/Form"
 import Meals from "./telas/Meals"
 import SettingsScreen from "./telas/Settings"
 import TabBar from "./components/TabBar"
-import ProfileScreen from "./telas/Profile"
+import Profile from "./telas/Profile"
 
 function AppContent() {
   const [currentScreen, setCurrentScreen] = useState("welcome")
@@ -49,7 +49,7 @@ function AppContent() {
     return (
       <View style={{ flex: 1 }}>
         {activeTab === "profile" && (
-          <ProfileScreen formData={formData} onFormChange={setFormData} />
+          <Profile formData={formData} onFormChange={setFormData} />
         )}
         {activeTab === "meals" && <Meals userName={formData.nome} />}
         {activeTab === "settings" && <SettingsScreen />}

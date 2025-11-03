@@ -4,7 +4,7 @@ import { useState } from "react"
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native"
 import { Picker } from "@react-native-picker/picker"
 
-export default function ProfileScreen({ formData, onFormChange }) {
+export default function Profile({ formData, onFormChange }) {
     const [atividade, setAtividade] = useState(formData.atividade || "")
 
     const handleSave = () => {
