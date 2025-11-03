@@ -37,13 +37,13 @@ function AppContent() {
         formData={formData}
         onFormChange={setFormData}
         onSubmit={() => {
-          setCurrentScreen("objectives")
+          setCurrentScreen("Objectives")
         }}
       />
     )
   }
 
-  if (currentScreen === "objectives") {
+  if (currentScreen === "Objectives") {
     return (
       <Objectives
         onFormChange={setFormData}
