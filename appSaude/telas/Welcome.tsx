@@ -21,8 +21,8 @@ export default function Welcome({ onStart }) {
         <View style={styles.content}>
           <View style={styles.logoContainer}>
             {/* <Text style={styles.title}>Macros</Text> */}
-            <Image source={require("../assets/logo-macros-cores.png")} style={styles.logo} />
-            <Text style={styles.subtitle}>Controle suas macros diárias</Text>
+            <Image source={require("../assets/logo-macros-full-branca-completa.png")} style={styles.logo} />
+            {/* <Text style={styles.subtitle}>Controle suas macros diárias</Text> */}
           </View>
 
           <View style={styles.featuresContainer}>
