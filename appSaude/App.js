@@ -1,5 +1,6 @@
 "use client"
 
+// App.js
 import { useState } from "react"
 import { View } from "react-native"
 import { ThemeProvider } from "./context/ThemeContext"
@@ -8,7 +9,7 @@ import Form from "./telas/Form"
 import Meals from "./telas/Meals"
 import SettingsScreen from "./telas/Settings"
 import TabBar from "./components/TabBar"
-import ProfileScreen from "./telas/Profile"
+import ProfileScreen from "./telas/ProfileScreen"
 
 function AppContent() {
   const [currentScreen, setCurrentScreen] = useState("welcome")
@@ -24,13 +25,7 @@ function AppContent() {
   })
 
   if (currentScreen === "welcome") {
-    return (
-      <Welcome
-        onStart={() => {
-          setCurrentScreen("form")
-        }}
-      />
-    )
+    return <Welcome onStart={() => setCurrentScreen("form")} />
   }
 
   if (currentScreen === "form") {
@@ -40,6 +35,7 @@ function AppContent() {
         onFormChange={setFormData}
         onSubmit={() => {
           setCurrentScreen("meals")
+          setActiveTab("profile")
         }}
       />
     )
@@ -49,15 +45,21 @@ function AppContent() {
     return (
       <View style={{ flex: 1 }}>
         {activeTab === "profile" && (
-          <ProfileScreen formData={formData} onFormChange={setFormData} />
+          <ProfileScreen
+            formData={formData}
+            onEdit={() => {
+              setCurrentScreen("form")
+            }}
+          />
         )}
+
         {activeTab === "meals" && <Meals userName={formData.nome} />}
         {activeTab === "settings" && <SettingsScreen />}
+
         <TabBar activeTab={activeTab} onTabChange={setActiveTab} />
       </View>
     )
   }
-
 
   return null
 }
