@@ -9,7 +9,7 @@ import Form from "./telas/Form"
 import Meals from "./telas/Meals"
 import SettingsScreen from "./telas/Settings"
 import TabBar from "./components/TabBar"
-import ProfileScreen from "./telas/ProfileScreen"
+import Profile from "./telas/Profile"
 
 function AppContent() {
   const [currentScreen, setCurrentScreen] = useState("welcome")
@@ -45,7 +45,7 @@ function AppContent() {
     return (
       <View style={{ flex: 1 }}>
         {activeTab === "profile" && (
-          <ProfileScreen
+          <Profile
             formData={formData}
             onEdit={() => {
               setCurrentScreen("form")

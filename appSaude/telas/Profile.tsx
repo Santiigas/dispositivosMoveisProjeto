@@ -113,7 +113,7 @@ const imcColor = (imc?: number | null) => {
     return "#ef4444"
 }
 
-export default function ProfileScreen({ formData = {}, onEdit }: Props) {
+export default function Profile({ formData = {}, onEdit }: Props) {
     const { colors } = useTheme ? useTheme() : { colors: { background: "#0b0b0b", text: "#fff", card: "#1e1e1e", border: "#2b2b2b", primary: "#ef4444" } }
 
     const parsed = useMemo(() => {
