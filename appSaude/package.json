@@ -13,14 +13,16 @@
     "@react-native-picker/picker": "^2.11.2",
     "dayjs": "^1.11.18",
     "expo": "~54.0.10",
+    "expo-linear-gradient": "~15.0.7",
     "expo-status-bar": "~3.0.8",
-    "lucide-react": "0.544.0",
-    "lucide-react-native": "^0.548.0",
+    "lucide-react-native": "^0.555.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-native": "0.81.4",
+    "react-native-chart-kit": "^6.12.0",
+    "react-native-svg": "^15.15.0",
     "react-native-ui-datepicker": "^3.1.2",
-    "react-native-web": "^0.21.0",
+    "react-native-web": "~0.21.0",
     "tailwind-merge": "3.3.1",
     "tailwindcss-animate": "1.0.7",
     "yarn": "^1.22.22"
@@ -29,7 +31,7 @@
   "devDependencies": {
     "@types/react": "~19.1.10",
     "postcss": "8.5.6",
-    "tailwindcss": "4.1.14",
+    "tailwindcss": "^4.1.14",
     "typescript": "~5.9.2"
   }
 }

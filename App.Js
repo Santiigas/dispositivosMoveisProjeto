@@ -1,16 +1,15 @@
 "use client"
 
+// App.js
 import { useState } from "react"
 import { View } from "react-native"
 import { ThemeProvider } from "./context/ThemeContext"
 import Welcome from "./telas/Welcome"
 import Form from "./telas/Form"
-import Profile from "./telas/Profile"
-
 import Meals from "./telas/Meals"
 import SettingsScreen from "./telas/Settings"
 import TabBar from "./components/TabBar"
-import Objectives from "./telas/Objectives"
+import ProfileScreen from "./telas/ProfileScreen"
 
 function AppContent() {
   const [currentScreen, setCurrentScreen] = useState("welcome")
@@ -21,16 +20,12 @@ function AppContent() {
     peso: "",
     idade: "",
     genero: "masculino",
+    agua: "",
+    atividade: "",
   })
 
   if (currentScreen === "welcome") {
-    return (
-      <Welcome
-        onStart={() => {
-          setCurrentScreen("form")
-        }}
-      />
-    )
+    return <Welcome onStart={() => setCurrentScreen("form")} />
   }
 
   if (currentScreen === "form") {
@@ -39,18 +34,8 @@ function AppContent() {
         formData={formData}
         onFormChange={setFormData}
         onSubmit={() => {
-          setCurrentScreen("Objectives")
-        }}
-      />
-    )
-  }
-
-  if (currentScreen === "Objectives") {
-    return (
-      <Objectives
-        onFormChange={setFormData}
-        onSubmit={() => {
           setCurrentScreen("meals")
+          setActiveTab("profile")
         }}
       />
     )
@@ -59,9 +44,18 @@ function AppContent() {
   if (currentScreen === "meals") {
     return (
       <View style={{ flex: 1 }}>
-        {activeTab === "profile" && <Profile formData={formData} />}
+        {activeTab === "profile" && (
+          <ProfileScreen
+            formData={formData}
+            onEdit={() => {
+              setCurrentScreen("form")
+            }}
+          />
+        )}
+
         {activeTab === "meals" && <Meals userName={formData.nome} />}
         {activeTab === "settings" && <SettingsScreen />}
+
         <TabBar activeTab={activeTab} onTabChange={setActiveTab} />
       </View>
     )

@@ -6,7 +6,6 @@ O aplicativo permitirá que o usuário realize o cálculo de sua Taxa Metabólic
 
 Além dos cálculos principais, o Macros também visa oferecer sugestões de alimentos e refeições compatíveis com as metas nutricionais do usuário, bem como uma estimativa da quantidade ideal de água a ser ingerida diariamente. Essas informações serão exibidas de forma clara e organizada em uma interface moderna e funcional, garantindo uma boa experiência de uso.
 
-O projeto está sendo desenvolvido no contexto da disciplina Programação para Dispositivos Móveis em Android, com foco no aprendizado prático das tecnologias aplicadas ao desenvolvimento de aplicativos. A equipe é composta pelos discentes Thayanne, Jackson, Santiago e Ícaro, que se dividem entre as tarefas de construção das telas, design, documentação e implementação das funcionalidades.
+O projeto está sendo desenvolvido no contexto da disciplina Programação para Dispositivos Móveis em Android, com foco no aprendizado prático das tecnologias aplicadas ao desenvolvimento de aplicativos. A equipe é composta pelos discentes Thayanne, Jackson, Santiago e Ycaro, que se dividem entre as tarefas de construção das telas, design, documentação e implementação das funcionalidades.
 
 Dessa forma, o Macros – Contador de Calorias propõe-se não apenas a servir como um exercício de aplicação dos conhecimentos técnicos da disciplina, mas também como uma contribuição social, incentivando o autocuidado e a conscientização alimentar por meio da tecnologia.
-

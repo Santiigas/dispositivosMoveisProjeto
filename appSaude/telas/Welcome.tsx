@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     width: 140,
     height: 180,
     marginBottom: 20,
-    
+
   },
   title: {
     fontSize: 48,
